@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>RF Simulation Lab</title>
+
+<link rel="stylesheet" href="/static/style.css">
+
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+</head>
+
+<body>
+
+<div class="layout">
+
+<div class="sidebar">
+
+<h2>RF Simulation Lab</h2>
+
+<label>Modulation</label>
+
+<select id="modulation">
+<option>BPSK</option>
+<option>QPSK</option>
+<option>QAM</option>
+<option>AUTO</option>
+</select>
+
+<label>Channel</label>
+
+<select id="channel">
+<option>AWGN</option>
+<option>Rayleigh</option>
+<option>5G Urban</option>
+</select>
+
+<label>SNR</label>
+
+<input type="range" id="snr" min="0" max="20" value="10">
+
+<span id="snr_val">10</span>
+
+<button class="run-btn" onclick="runSimulation()">Run Simulation</button>
+
+<div class="stats">
+
+<p>BER : <span id="ber">-</span></p>
+
+<p>Selected Modulation : <span id="selected_mod"></span></p>
+
+</div>
+
+</div>
+
+<div class="dashboard">
+
+<div class="tabs">
+
+<button onclick="openPanel('waveform_panel')">Waveform</button>
+
+<button onclick="openPanel('const_panel')">Constellation</button>
+
+<button onclick="openPanel('const3d_panel')">3D Constellation</button>
+
+<button onclick="openPanel('spectrum_panel')">Spectrum</button>
+
+<button onclick="openPanel('ber_panel')">BER Curve</button>
+
+<button onclick="openPanel('anim_panel')">Signal Animation</button>
+
+<button onclick="openPanel('rf3d_panel'); startRFSimulation()">3D RF Simulation</button>
+
+</div>
+
+<div class="workspace">
+
+<div id="waveform_panel" class="panel"></div>
+
+<div id="const_panel" class="panel"></div>
+
+<div id="const3d_panel" class="panel"></div>
+
+<div id="spectrum_panel" class="panel"></div>
+
+<div id="ber_panel" class="panel"></div>
+
+<div id="anim_panel" class="panel">
+
+<canvas id="signalCanvas" width="800" height="500"></canvas>
+
+</div>
+
+<div id="rf3d_panel" class="panel">
+
+<div id="rf3d_container"></div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<script src="/static/script.js"></script>
+
+</body>
+
+</html>
